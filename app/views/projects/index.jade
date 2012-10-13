@@ -1,0 +1,15 @@
+.page-header
+  h1 Index of projects
+
+- projects.forEach(function (project) {
+  .row
+    .span-two-thirds= 'project #' + project.id
+    .span-one-third
+      != link_to('Edit', path_to.edit_project(project), {class: 'btn primary'}) + ' '
+      != link_to('Delete', path_to.project(project), {class: 'btn danger', method: 'delete', remote: true, jsonp: '(function (u) {location.href = u;})'})
+- });
+
+hr
+
+.well
+  != link_to('New project', path_to.new_project(), {class: 'btn'})
